@@ -1,9 +1,7 @@
 package mypackage;
 
-
 /**
- *
- * @author Andrew
+ * Child class of Cardboard
  */
 public class Type1 extends Cardboard {
 
@@ -13,22 +11,24 @@ public class Type1 extends Cardboard {
     }
     
     /**
-     *
+     * Override the abstract method to calculate final price
      * @return final price of the cardboard
      */
     @Override
     public double calculatePrice() {     
         double basicCost = basicCost(); 
         double additionalCost = 0;
-        if(sealableTop == true){
-            double sealableTopPrice = basicCost*0.1;
-            additionalCost += sealableTopPrice;
-        }        
+        if(sealableTop == true) additionalCost += basicCost*0.1;       
         cost = basicCost + additionalCost;
         cost *= this.quantity;
         return cost;
     }
     
+    /**
+    * Override the parent method, implementing new information based on the child
+    * @return String containing the info of the cardboard
+    */
+    @Override
     public String getInformation(){
         return super.getInformation();
     }

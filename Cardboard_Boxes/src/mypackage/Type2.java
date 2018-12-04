@@ -1,9 +1,7 @@
 package mypackage;
 
-
 /**
- *
- * @author Andrew
+ * Child class of Cardboard
  */
 public class Type2 extends Cardboard {
 
@@ -12,8 +10,8 @@ public class Type2 extends Cardboard {
         cost = calculatePrice();
     }
 
-    /**
-     *
+     /**
+     * Override the abstract method to calculate final price
      * @return final price of the cardboard
      */
     @Override
@@ -28,6 +26,10 @@ public class Type2 extends Cardboard {
         //return this.cost *= 1.12;   
     }
     
+    /**
+    * Override the parent method, implementing new information based on the child
+    * @return String containing the info of the cardboard
+    */
      public String getInformation(){
         return super.getInformation() + " - Colour " + this.colour;
     }

@@ -1,14 +1,7 @@
 package mypackage;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author Andre
+ * Child class of Cardboard
  */
 public class Type5 extends Cardboard {
 
@@ -17,8 +10,8 @@ public class Type5 extends Cardboard {
         cost = calculatePrice();
     }
 
-    /**
-     *
+     /**
+     * Override the abstract method to calculate final price
      * @return final price of the cardboard
      */
     @Override
@@ -35,6 +28,10 @@ public class Type5 extends Cardboard {
         //return this.cost *= 1.3;
     }
     
+    /**
+    * Override the parent method, implementing new information based on the child
+    * @return String containing the info of the cardboard
+    */
      public String getInformation(){
         return super.getInformation() + " - Colour " + this.colour + " - Bottom Re. " + this.reinfBottom + " - Corner Re. " + this.reinfCorner;
     }

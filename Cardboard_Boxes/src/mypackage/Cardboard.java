@@ -7,7 +7,7 @@ package mypackage;
  */
 
 /**
- *
+ * Abstract class of the Cardboard Boxes System
  * @author lopese
  */
 public abstract class Cardboard {
@@ -15,8 +15,8 @@ public abstract class Cardboard {
     protected double width, length, height;
     protected String grade, colour;
     protected boolean reinfBottom, reinfCorner, sealableTop;
-    protected double[] gradeCosts = new double[]{0.55, 0.65, 0.82, 0.98, 1.5};
-    protected double cost; //maybe implement finalCost
+    protected double[] gradeCosts = new double[]{0.55, 0.65, 0.82, 0.98, 1.5}; // Fixed costs of the grades
+    protected double cost;
     
      /**
      * Construct a new box with the box specifications used by all other box
@@ -75,8 +75,8 @@ public abstract class Cardboard {
     }
     
     /**
-     * @return the width
-     */
+    * @return the width
+    */
     public double getWidth() {
         return width;
     }
@@ -144,19 +144,30 @@ public abstract class Cardboard {
         return cost;
     }
     
+    /**
+    * Abstract method to be overridden within child class
+    * Calculate final price of the current order of the box
+    */
     public abstract double calculatePrice();
     
+    /**
+    * Method to calculate the basic cost of the box, independently from the Type
+    * @return a double value containing the cost of the cardboard
+    */
     public double basicCost(){
         int index = Integer.parseInt(this.grade)-1;
         double surface = 2*(height*length + height*width + length*width);
-        double basicCost = (double) Math.round(surface * getGradeCosts()[index] * 100) / 100;
+        double basicCost = surface * getGradeCosts()[index];/*(double) Math.round(surface * getGradeCosts()[index] * 100) / 100;*/
         return basicCost;
     }
     
+    /**
+    * Method to get the basic information of the Cardboard, such as cost, grade, sealable status and quantity
+    * @return a String value containing the info of the cardboard
+    */
     public String getInformation(){
-        String info = "Cost " + String.format("%.2f", this.cost) + "£ - Grade " + this.grade + " - Sealable " + this.sealableTop + " - Quantity " + this.quantity;
-       // String info = "Grade " + this.grade + " - Colour " + this.colour + " - Bottom " + this.reinfBottom + " - Corner" + this.reinfCorner + " - Sealable " + this.sealableTop + " - Quantity " + this.quantity; 
-        return info; 
+       String info = "Cost " + String.format("%.2f", this.cost) + "£ - Grade " + this.grade + " - Sealable " + this.sealableTop + " - Quantity " + this.quantity;
+       return info; 
     }
 
 }
